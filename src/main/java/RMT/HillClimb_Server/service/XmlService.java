@@ -9,10 +9,13 @@ import java.util.List;
 
 public interface XmlService {
 
-    public void serializeArray(String filePath, ArrayOfPlayersDTO playerDTOs);
+    void serializeArray(String filePath, ArrayOfPlayersDTO playerDTOs);
 
-    public ArrayOfPlayersDTO deserializeArray(String filePath);
+    ArrayOfPlayersDTO deserializeArray(String filePath);
 
-    public User deserializeUser(String filePath);
+    User deserializeUser(String filePath);
 
+    void serlializeCoins(String filePath, PlayerDTO playerDTO);
+
+    void serlializeScore(String filePath, PlayerDTO playerDTO);
 }

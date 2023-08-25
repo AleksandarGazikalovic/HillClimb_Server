@@ -119,7 +119,29 @@ public class GameServiceImplementation implements GameService {
                 xmlService.serializeArray(HCRPlayers.toPath().toString(), playerDTOs);
             }
         }
+
+    @Override
+    public void saveCoins(PlayerDTO playerDTO) {
+        String path = System.getProperty("user.home") + "\\Documents\\";
+        if (!path.endsWith("\\")) path += "\\";
+        path += "Pendulum_v3FullApp\\";
+        File HCRPlayers = new File(path + "HCRPlayers.xml");
+        if(HCRPlayers.exists()) {
+            xmlService.serlializeCoins(HCRPlayers.toPath().toString(),playerDTO);
+        }
     }
+
+    @Override
+    public void saveScore(PlayerDTO playerDTO) {
+        String path = System.getProperty("user.home") + "\\Documents\\";
+        if (!path.endsWith("\\")) path += "\\";
+        path += "Pendulum_v3FullApp\\";
+        File HCRPlayers = new File(path + "HCRPlayers.xml");
+        if(HCRPlayers.exists()) {
+            xmlService.serlializeScore(HCRPlayers.toPath().toString(),playerDTO);
+        }
+    }
+}
 
 
 

@@ -11,4 +11,8 @@ public interface GameService {
     DTO loadSelected();
 
     void AddPlayer(PlayerDTO playerDTO, ArrayOfPlayersDTO playerDTOs);
+
+    void saveCoins(PlayerDTO playerDTO);
+
+    void saveScore(PlayerDTO playerDTO);
 }
