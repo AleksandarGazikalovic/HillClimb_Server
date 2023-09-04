@@ -10,6 +10,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class PlayerDTO {
@@ -25,14 +29,13 @@ public class PlayerDTO {
 
     private float BestScore;
 
+    private List<String> UnlockedCars;
+
     private float LastScore;
 
+    private String SelectedCar;
 
-    public PlayerDTO(String name, String surname, int id) {
-        Name = name;
-        Surname = surname;
-        Id = id;
-    }
+
 
     @XmlElement(name="UserName")
     @JsonProperty("UserName")
@@ -86,6 +89,16 @@ public class PlayerDTO {
         BestScore = bestScore;
     }
 
+    @XmlElement(name = "UnlockedCars")
+    @JsonProperty("UnlockedCars")
+    public List<String> getUnlockedCars() {
+        return UnlockedCars;
+    }
+
+    public void setUnlockedCars(List<String> unlockedCars) {
+        UnlockedCars = unlockedCars;
+    }
+
     @JsonIgnore
     @XmlTransient
     public float getLastScore() {
@@ -94,5 +107,22 @@ public class PlayerDTO {
 
     public void setLastScore(float lastScore) {
         LastScore = lastScore;
+    }
+
+    @XmlElement(name = "SelectedCar")
+    @JsonProperty("SelectedCar")
+    public String getSelectedCar() {
+        return SelectedCar;
+    }
+
+    public void setSelectedCar(String selectedCar) {
+        SelectedCar = selectedCar;
+    }
+
+    public PlayerDTO(String name, String surname, int id) {
+        Name = name;
+        Surname = surname;
+        Id = id;
+        UnlockedCars = new ArrayList<>(Arrays.asList("Car1"));
     }
 }

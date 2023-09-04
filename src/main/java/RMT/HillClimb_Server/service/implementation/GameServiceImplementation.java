@@ -46,6 +46,9 @@ public class GameServiceImplementation implements GameService {
 
                 Files.copy(HCRPlayers.toPath(), HCRPlayers_Backup.toPath());
                 playerDTOs = xmlService.deserializeArray(HCRPlayers.toPath().toString());
+                if(playerDTOs==null) {
+                    playerDTOs=new ArrayOfPlayersDTO();
+                }
                 return new LoadPlayersResponseDTO(playerDTOs);
             } else {
                 File HCRPlayers_Backup = new File(path + "HCRPlayers_Backup.xml");
@@ -57,6 +60,9 @@ public class GameServiceImplementation implements GameService {
 
                     Files.copy(HCRPlayers_Backup.toPath(), HCRPlayers_Backup1.toPath());
                     playerDTOs = xmlService.deserializeArray(HCRPlayers_Backup.toPath().toString());
+                    if(playerDTOs==null) {
+                        playerDTOs=new ArrayOfPlayersDTO();
+                    }
                     return new LoadPlayersResponseDTO(playerDTOs);
                 }
                 return new ErrorResponseDTO("Error loading players!");
@@ -127,7 +133,14 @@ public class GameServiceImplementation implements GameService {
         path += "Pendulum_v3FullApp\\";
         File HCRPlayers = new File(path + "HCRPlayers.xml");
         if(HCRPlayers.exists()) {
-            xmlService.serlializeCoins(HCRPlayers.toPath().toString(),playerDTO);
+            playerDTOs.getPlayerDTO().stream()
+                    .filter(obj -> obj.getId()==playerDTO.getId())
+                    .forEach(obj -> {
+                        obj.setCoins(playerDTO.getCoins());
+                    });
+
+            xmlService.serializeArray(HCRPlayers.getPath().toString(),playerDTOs);
+            //xmlService.serlializeCoins(HCRPlayers.toPath().toString(),playerDTO);
         }
     }
 
@@ -138,8 +151,53 @@ public class GameServiceImplementation implements GameService {
         path += "Pendulum_v3FullApp\\";
         File HCRPlayers = new File(path + "HCRPlayers.xml");
         if(HCRPlayers.exists()) {
-            xmlService.serlializeScore(HCRPlayers.toPath().toString(),playerDTO);
+            playerDTOs.getPlayerDTO().stream()
+                    .filter(obj -> obj.getId()==playerDTO.getId())
+                    .forEach(obj -> { obj.setBestScore(playerDTO.getBestScore());
+                    });
+
+            xmlService.serializeArray(HCRPlayers.getPath().toString(),playerDTOs);
+            //xmlService.serlializeCoins(HCRPlayers.toPath().toString(),playerDTO);
         }
+    }
+
+    @Override
+    public void saveUnlockedCar(PlayerDTO playerDTO) {
+        String path = System.getProperty("user.home") + "\\Documents\\";
+        if (!path.endsWith("\\")) path += "\\";
+        path += "Pendulum_v3FullApp\\";
+        File HCRPlayers = new File(path + "HCRPlayers.xml");
+        if(HCRPlayers.exists()) {
+            playerDTOs.getPlayerDTO().stream()
+                    .filter(obj -> obj.getId()==playerDTO.getId())
+                    .forEach(obj -> {
+                        obj.setUnlockedCars(playerDTO.getUnlockedCars());
+                    });
+
+            xmlService.serializeArray(HCRPlayers.getPath().toString(),playerDTOs);
+        }
+    }
+
+    @Override
+    public void saveSelectedCar(PlayerDTO playerDTO) {
+        String path = System.getProperty("user.home") + "\\Documents\\";
+        if (!path.endsWith("\\")) path += "\\";
+        path += "Pendulum_v3FullApp\\";
+        File HCRPlayers = new File(path + "HCRPlayers.xml");
+        if(HCRPlayers.exists()) {
+            playerDTOs.getPlayerDTO().stream()
+                    .filter(obj -> obj.getId()==playerDTO.getId())
+                    .forEach(obj -> {
+                        obj.setSelectedCar(playerDTO.getSelectedCar());
+                    });
+
+            xmlService.serializeArray(HCRPlayers.getPath().toString(),playerDTOs);
+            //xmlService.serlializeScore(HCRPlayers.toPath().toString(),playerDTO);
+        }
+    }
+
+    public void nzm(){
+
     }
 }
 

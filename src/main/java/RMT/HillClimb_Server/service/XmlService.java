@@ -15,7 +15,7 @@ public interface XmlService {
 
     User deserializeUser(String filePath);
 
-    void serlializeCoins(String filePath, PlayerDTO playerDTO);
+    //void serlializeCoins(String filePath, PlayerDTO playerDTO);
 
-    void serlializeScore(String filePath, PlayerDTO playerDTO);
+    //void serlializeScore(String filePath, PlayerDTO playerDTO);
 }

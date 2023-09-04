@@ -15,4 +15,8 @@ public interface GameService {
     void saveCoins(PlayerDTO playerDTO);
 
     void saveScore(PlayerDTO playerDTO);
+
+    void saveUnlockedCar(PlayerDTO playerDTO);
+
+    void saveSelectedCar(PlayerDTO playerDTO);
 }

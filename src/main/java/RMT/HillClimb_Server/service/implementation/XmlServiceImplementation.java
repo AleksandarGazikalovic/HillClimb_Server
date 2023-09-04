@@ -73,7 +73,7 @@ public class XmlServiceImplementation implements XmlService {
         }
     }
 
-    @Override
+    /*@Override
     public void serlializeCoins(String filePath, PlayerDTO playerDTO) {
 
         try {
@@ -96,7 +96,6 @@ public class XmlServiceImplementation implements XmlService {
             }
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
                 DOMSource source = new DOMSource(doc);
                 StreamResult result = new StreamResult(filePath);
@@ -106,9 +105,9 @@ public class XmlServiceImplementation implements XmlService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void serlializeScore(String filePath, PlayerDTO playerDTO) {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -130,7 +129,6 @@ public class XmlServiceImplementation implements XmlService {
             }
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(filePath);
@@ -140,6 +138,6 @@ public class XmlServiceImplementation implements XmlService {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }
+    }*/
 
 }

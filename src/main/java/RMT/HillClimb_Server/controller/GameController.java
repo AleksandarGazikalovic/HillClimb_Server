@@ -57,6 +57,19 @@ public class GameController {
         return null;
     }
 
+    @PostMapping("/unlock-car")
+    @CrossOrigin(origins = "http://localhost:8000/")
+    public ResponseEntity<PlayerDTO> unlockCar(@RequestBody PlayerDTO playerDTO){
+        gameService.saveUnlockedCar(playerDTO);
+        return null;
+    }
+
+    @PostMapping("/selected-car")
+    @CrossOrigin(origins = "http://localhost:8000/")
+    public ResponseEntity<PlayerDTO> selectedCar(@RequestBody PlayerDTO playerDTO){
+        gameService.saveSelectedCar(playerDTO);
+        return null;
+    }
 
 
 }
