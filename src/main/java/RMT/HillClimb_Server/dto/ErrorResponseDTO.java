@@ -12,3 +12,4 @@ import lombok.Setter;
 public class ErrorResponseDTO extends DTO{
     String message;
 }
+

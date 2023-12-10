@@ -124,5 +124,6 @@ public class PlayerDTO {
         Surname = surname;
         Id = id;
         UnlockedCars = new ArrayList<>(Arrays.asList("Car1"));
+        SelectedCar = "Car1";
     }
 }

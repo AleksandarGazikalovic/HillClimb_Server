@@ -14,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequestMapping("/")
-@CrossOrigin(origins = "http://localhost:8000/")
+@CrossOrigin(origins = "http://127.0.0.1:8080/")
 public class GameController {
     private GameService gameService;
 
@@ -24,7 +24,7 @@ public class GameController {
     }
 
     @GetMapping("/load-players")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<List<PlayerDTO>> loadPlayers(){
         DTO response = gameService.loadPlayers();
         if(response instanceof LoadPlayersResponseDTO) {
@@ -34,7 +34,7 @@ public class GameController {
     }
 
     @GetMapping("/load-selected")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<PlayerDTO> loadSelected(){
         DTO response = gameService.loadSelected();
         if(response instanceof LoadSelectedResponseDTO) {
@@ -44,28 +44,28 @@ public class GameController {
     }
 
     @PostMapping("/save-coins")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<PlayerDTO> saveCoins(@RequestBody PlayerDTO playerDTO){
         gameService.saveCoins(playerDTO);
         return null;
     }
 
     @PostMapping("/save-score")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<PlayerDTO> saveScore(@RequestBody PlayerDTO playerDTO){
         gameService.saveScore(playerDTO);
         return null;
     }
 
     @PostMapping("/unlock-car")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<PlayerDTO> unlockCar(@RequestBody PlayerDTO playerDTO){
         gameService.saveUnlockedCar(playerDTO);
         return null;
     }
 
     @PostMapping("/selected-car")
-    @CrossOrigin(origins = "http://localhost:8000/")
+    @CrossOrigin(origins = "http://127.0.0.1:8080/")
     public ResponseEntity<PlayerDTO> selectedCar(@RequestBody PlayerDTO playerDTO){
         gameService.saveSelectedCar(playerDTO);
         return null;
